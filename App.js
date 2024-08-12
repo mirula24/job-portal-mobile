@@ -8,7 +8,8 @@ import {
   Label,
   Checkbox,
   ScrollView,
-  Image
+  Image,
+  Paragraph,
 } from "tamagui";
 import { TamaguiProvider, createTamagui } from "@tamagui/core";
 import { config } from "@tamagui/config/v3";
@@ -39,65 +40,56 @@ export default function App() {
   }
 
   return (
-    <TamaguiProvider config={tamaguiConfig}>
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <TamaguiProvider config={tamaguiConfig}>
         <ScrollView>
-          <XStack
-            backgroundColor="skyblue"
-            width="100%"
-            marginTop={32}
-            height={60}
-            alignItems="center"
-            justifyContent="space-between"
-            paddingHorizontal={10}
-            position="absolute"
-            top={0}
-            zIndex={1000}
-          >
-            <Text fontSize={32} fontWeight={500} fontFamily={"poppins-Bold"}>
-              GitHub Job
-            </Text>
-            <Button size="$4" circular backgroundColor={"transparent"}>
-              <AntDesign name="search1" size={24} color="black" />
-            </Button>
-          </XStack>
-
-          <YStack marginTop={100}>
-            <Label>Location</Label>
-            <Input size="$4" width={300}></Input>
-
-            <Label>Description</Label>
-            <Input size="$4" width={300}></Input>
-            <XStack alignItems="center">
-              <Checkbox size="$4">
-                <Checkbox.Indicator>
-                  <CheckIcon />
-                </Checkbox.Indicator>
-              </Checkbox>
-              <Label padding={5}>Fulltime</Label>
+          <View>
+            <XStack
+              backgroundColor="skyblue"
+              width="100%"
+              marginTop={32}
+              height={60}
+              alignItems="center"
+              justifyContent="space-between"
+              paddingHorizontal={10}
+              position="absolute"
+              top={0}
+              zIndex={1000}
+            >
+              <Text fontSize={32} fontWeight={500} fontFamily={"poppins-Bold"}>
+                GitHub Job
+              </Text>
+              <Button size="$4" circular backgroundColor={"transparent"}>
+                <AntDesign name="search1" size={24} color="black" />
+              </Button>
             </XStack>
-            {jobs.map((data) => {
-              return (
-                <XStack height={100} backgroundColor="gray">
-                  <YStack>
-                  <Label >{data.title}</Label>
-                  <Label >{data.company}</Label>
 
-                  </YStack>
-                  <Image
-      source={{
-        uri: data.company_logo,
-        width: 200,
-        height: 300,
-      }}
-    />
-                </XStack>
-              );
-            })}
-          </YStack>
+            <YStack marginTop={100} padding={5} marginLeft={5} justifyContent="center" marginInline={'auto'}>
+              <YStack>
+                <Label size="$5">Location</Label>
+                <Input size="$5" width={300}></Input>
+              </YStack>
+              <YStack>
+
+              <Label size="$5">Description</Label>
+              <Input size="$5" width={300}></Input>
+              </YStack>
+              <XStack alignItems="center">
+                <Checkbox size="$5">
+                  <Checkbox.Indicator>
+                    <CheckIcon />
+                  </Checkbox.Indicator>
+                </Checkbox>
+                <Label padding={5} size="$5">Fulltime</Label>
+              </XStack>
+              {jobs.map((data) => {
+                return <View></View>;
+              })}
+            </YStack>
+          </View>
         </ScrollView>
-      </SafeAreaView>
-    </TamaguiProvider>
+      </TamaguiProvider>
+    </SafeAreaView>
   );
 }
 
